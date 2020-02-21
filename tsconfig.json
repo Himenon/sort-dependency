@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "outDir": "lib",
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "resolveJsonModule": true
+  },
+  "include": ["src", "./types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,111 @@
+{
+  "name": "sort-dependency",
+  "version": "0.1.0",
+  "description": "sorting library dependencies",
+  "keywords": [
+    "dependencies",
+    "sort",
+    "topological sort",
+    "graphviz"
+  ],
+  "homepage": "https://github.com/Himenon/sort-dependency#readme",
+  "bugs": {
+    "url": "https://github.com/Himenon/sort-dependency/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Himenon/sort-dependency.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Himenon",
+    "email": "k.himeno314@gmail.com",
+    "url": "https://github.com/Himenon"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "bin": {
+    "sort-dependency": "./bin/sort-dependency"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "yarn clean && tsc -p ./tsconfig.build.json",
+    "ci:notify:release": "ts-node ./scripts/notify.ts",
+    "clean": "rimraf ./lib tsconfig.build.tsbuildinfo",
+    "cli": "node ./lib/cli.js",
+    "commit": "npx git-cz",
+    "cruiser": "dependency-cruiser --validate .dependency-cruiser.js src",
+    "depcruise": "depcruise --validate .dependency-cruiser.js src",
+    "depcruise:html": "depcruise --validate --output-type err-html -f dependency-report.html .dependency-cruiser.js src",
+    "dev": "yarn ts ./src/index.ts",
+    "dev:cli": "yarn ts ./src/cli/index.ts",
+    "develop": "yarn run build --watch",
+    "format": "yarn lint --fix && prettier --write \"**/*.{ts,tsx,js,jsx,json,yml,yaml,html,md}\"",
+    "lint": "eslint -c ./.eslintrc.js 'src/**/*.{ts,tsx}'",
+    "lint:fix": "yarn lint --fix",
+    "run:index": "yarn ts ./src/index.ts",
+    "server": "node ./lib/server.js",
+    "start": "yarn develop",
+    "test": "yarn cruiser && yarn test:jest",
+    "test:ci": "yarn test",
+    "test:jest": "jest -c ./jest.config.js",
+    "test:watch": "yarn test:jest --watch",
+    "ts": "ts-node -P ./tsconfig.json",
+    "version_up": "lerna version --yes"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.1",
+    "glob": "^7.1.6",
+    "is-invalid-path": "^1.0.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/chalk": "^2.2.0",
+    "@types/commander": "^2.12.2",
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "dependency-cruiser": "^7.2.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.4.0",
+    "generate-changelog": "^1.8.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "jest-cli": "^25.1.0",
+    "lerna": "^3.20.2",
+    "lint-staged": "^10.0.7",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "sort-package-json": "^1.39.1",
+    "ts-jest": "^25.2.0",
+    "ts-node": "^8.6.2",
+    "type-fest": "^0.10.0",
+    "typescript": "^3.7.5"
+  }
+}
