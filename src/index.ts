@@ -1,2 +1,1 @@
-import * as Graph from "./Graph";
-export { Graph };
+export { findTopologicalSortedGroup, findIndependents } from "./query";

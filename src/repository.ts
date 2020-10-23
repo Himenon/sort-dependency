@@ -1,11 +1,11 @@
 import { PackageJson } from "type-fest";
 import * as Model from "./model";
-import * as Graph from "./Graph";
+import * as Graph from "@himenon/graph";
 
 export const create = (model: Model.Type) => {
   const getPathList = (packageName: string): string[] => {
     const packageJsonPathList = Object.keys(model.getPackageJsonData());
-    return packageJsonPathList.filter(pathname => {
+    return packageJsonPathList.filter((pathname) => {
       return pathname.match(`node_modules/${packageName}/package.json`);
     });
   };

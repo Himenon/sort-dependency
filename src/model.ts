@@ -2,7 +2,7 @@ import * as os from "os";
 import * as fs from "fs";
 import * as path from "path";
 import { findPackageJson, FoundPackageJson } from "./findPackageJson";
-import * as Graph from "./Graph";
+import * as Graph from "@himenon/graph";
 
 export interface Params {
   baseDir: string;

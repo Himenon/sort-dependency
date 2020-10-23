@@ -5,6 +5,7 @@
     "strict": true,
     "esModuleInterop": true,
     "incremental": true,
+    "declaration": true,
     "outDir": "lib",
     "rootDir": "./src",
     "baseUrl": ".",

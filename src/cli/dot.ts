@@ -13,7 +13,5 @@ export const checkInstalled = (): boolean => {
 
 export const dot = (args: string, cwd: string = process.cwd()) => {
   console.info(chalk.blueBright("command" + ": " + args + os.EOL));
-  return execSync(`dot ${args}`, { cwd })
-    .toString()
-    .trim();
+  return execSync(`dot ${args}`, { cwd }).toString().trim();
 };

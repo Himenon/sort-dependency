@@ -2,22 +2,22 @@ import * as fs from "fs";
 import * as os from "os";
 import * as Model from "../model";
 import * as Repository from "../repository";
-import * as Graph from "../Graph";
+import * as Graph from "@himenon/graph";
 import * as Generator from "../Generator";
 import * as Cli from "./cli";
-import * as Query from "./query";
+import * as Query from "../query";
 import { PackageJson } from "type-fest";
 import chalk from "chalk";
 import { dot } from "./dot";
 
 const updateGraphParams = (graph: Graph.Type, packages: PackageJson[]) => {
-  packages.forEach(pkg => {
+  packages.forEach((pkg) => {
     const pkgName = pkg.name;
     if (!pkgName) {
       return;
     }
     graph.addNode(pkgName);
-    Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }).forEach(depName => {
+    Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }).forEach((depName) => {
       graph.addEdge(pkgName, depName);
     });
   });
@@ -75,7 +75,7 @@ const main = async () => {
     }
     return;
   }
-  const { graph: resultGraph, sortResult } = Query.findUploadOrderDependencies({
+  const { graph: resultGraph, sortResult } = Query.findTopologicalSortedGroup({
     graph,
     start: args.search.start,
     stop: args.search.stop,
@@ -97,6 +97,6 @@ const main = async () => {
   }
 };
 
-main().catch(error => {
+main().catch((error) => {
   console.error(chalk.red("Error") + `: ${error.message}`);
 });

@@ -9,7 +9,6 @@ module.exports = {
     "@typescript-eslint/no-floating-promises": 2,
     "@typescript-eslint/triple-slash-reference": [2, { path: "never", types: "never", lib: "never" }],
     "@typescript-eslint/no-unnecessary-qualifier": 2,
-    "@typescript-eslint/no-unnecessary-condition": [2, { ignoreRhs: true }],
     "@typescript-eslint/unified-signatures": 2,
     "no-undef": 0,
     "no-redeclare": 0,

@@ -1,5 +1,5 @@
 import * as os from "os";
-import * as Graph from "../Graph";
+import * as Graph from "@himenon/graph";
 import * as Template from "./Template";
 
 export const generateDotSource = (graph: Graph.Type, orderedList: string[], graphType: "tree" | "topological-sort") => {
@@ -11,7 +11,7 @@ export const generateDotSource = (graph: Graph.Type, orderedList: string[], grap
             if (!targets) {
               return [];
             }
-            return targets.map(target => {
+            return targets.map((target) => {
               return `    "${source}" -> "${target}"`;
             });
           })
@@ -19,7 +19,7 @@ export const generateDotSource = (graph: Graph.Type, orderedList: string[], grap
             return total.concat(current);
           }, [])
           .join(";" + os.EOL) + ";"
-      : nodes.map(node => `    "${node};"`).join(os.EOL);
+      : nodes.map((node) => `    "${node};"`).join(os.EOL);
 
   if (graphType === "tree") {
     return Template.generateTreeDiagram(nonOrderedCluster);
