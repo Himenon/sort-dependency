@@ -3,7 +3,7 @@ export const generateTopologicalSortGraph = (cluster1: string, orderedList: stri
   graph [splines=ortho, nodesep=0.8];
   node [shape=box];
   ${cluster1}
-  { rank=same; ${orderedList.map(n => `"${n}"`).join("; ")}; } // cluster作成後似記述する必要がある
+  { rank=same; ${orderedList.map((n) => `"${n}"`).join("; ")}; } // cluster作成後似記述する必要がある
 }
 `;
 
